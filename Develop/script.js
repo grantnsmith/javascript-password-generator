@@ -3,17 +3,16 @@
 
 
 
-
 function generatePassword() {
 
   // Prompting for length of password
     
-  var length = parseInt(prompt("How many characters would you like your password to be? Please choose between '8' and '128'."));
+    var length = parseInt(prompt("How many characters would you like your password to be? Please choose between '8' and '128'."));
     
   //   Checking for a number between 8 and 128
   
-    while (length < 8 || length > 128) {
-        alert("That is not betwen '8' and '128'. Please try again.");
+    while (length < 8 || length > 128)   {
+        alert("That is not a number betwen '8' and '128'. Please try again.");
         var length = prompt("How many characters would you like your password to be? Please choose between '8' and '128'.");
     };
   
@@ -28,34 +27,39 @@ function generatePassword() {
   //   Creating the various arrays we will use
   
     var characterSet = [];
+    var passwordArray = [];
     var uppercaseArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
     var lowercaseArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
     var numbersArray = ["0","1","2","3","4","5","6","7","8","9"];
-    var specialCharArray = ["!","@","#","$","%","^","&","*","?","~","<",">","{","}","[","]"]
+    var specialCharArray = ["!","@","#","$","%","^","&","*","?","~","<",">","{","}","[","]",":",";"];
   
   //   Based off user input, creating the final array that our random generator will pick from
   
     if (uppercase && lowercase && numbers && specialCharacters) { 
       characterSet = uppercaseArray.concat(lowercaseArray, numbersArray, specialCharArray);
-    
     } 
-    
+  
     else if (uppercase && lowercase && numbers) { 
       characterSet = uppercaseArray.concat(lowercaseArray, numbersArray);
-    
     }
-    
+  
     else if (uppercase && lowercase) { 
       characterSet = uppercaseArray.concat(lowercaseArray);
     
     } else {
         characterSet = uppercaseArray
     };
-  
+
+    // Choosing randomly from the characterSet array and creating a new Array, then turning that into a string
+    
     for (var i = 0; i < length; i++) {
-      var password = Math.floor(Math.random() * characterSet.length) + 1;
-      console.log(password);
-}
+          passwordArray.push(characterSet[Math.floor(Math.random() * characterSet.length)]);
+          var password = passwordArray.join('');
+    }
+
+    // Returning final string from where it was called
+  
+    return password; 
     
   }
 

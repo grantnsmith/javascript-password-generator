@@ -14,9 +14,6 @@ function generatePassword() {
   
   var length = parseInt(prompt("How many characters would you like your password to be? Please choose between '8' and '128'."));
   
- while (typeof(length) === "string") {
-        alert("HELLO")
-    }
 //   Checking for a number between 8 and 128
 
   while (length < 8 || length > 128)   {
@@ -35,6 +32,7 @@ function generatePassword() {
 //   Creating the various arrays we will use
 
   var characterSet = [];
+  var passwordArray = [];
   var uppercaseArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   var lowercaseArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   var numbersArray = ["0","1","2","3","4","5","6","7","8","9"];
@@ -58,16 +56,15 @@ function generatePassword() {
   };
   
   for (var i = 0; i < length; i++) {
-        var passwordArray = characterSet[Math.floor(Math.random() * characterSet.length)];
-        // var password = passwordArray.join('');
-        // console.log(password);
-        // Last two lines not working still
-       
+        passwordArray.push(characterSet[Math.floor(Math.random() * characterSet.length)]);
+        var password = passwordArray.join('');
   }
+
+  return password; 
   
 }
 
-generatePassword();
+console.log(generatePassword());
 
 </script>
     
