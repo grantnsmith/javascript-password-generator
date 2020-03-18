@@ -11,9 +11,9 @@ function generatePassword() {
     
   //   Checking for a number between 8 and 128
   
-    while (length < 8 || length > 128)   {
+    while (!(length >= 8 && length <= 128))   {
         alert("That is not a number betwen '8' and '128'. Please try again.");
-        var length = prompt("How many characters would you like your password to be? Please choose between '8' and '128'.");
+        var length = parseInt(prompt("How many characters would you like your password to be? Please choose between '8' and '128'."));
     };
   
   //   Asking for other password specifications (uppercase, lowerase, numbers, special characters)
@@ -33,111 +33,38 @@ function generatePassword() {
     var numbersArray = ["0","1","2","3","4","5","6","7","8","9"];
     var specialCharArray = ["!","@","#","$","%","^","&","*","?","~","<",">","{","}","[","]",":",";"];
   
-  //   Based off user input, creating the final array that our random generator will pick from
   
-  // User picks all 4 options
-  
-    if (uppercase && lowercase && numbers && specialCharacters) { 
-      characterSet = uppercaseArray.concat(lowercaseArray, numbersArray, specialCharArray);
-    } 
-  
-    // User picks uppercase, lowercase, numbers
-  
-    else if (uppercase && lowercase && numbers) { 
-      characterSet = uppercaseArray.concat(lowercaseArray, numbersArray);
-    }
-  
-    // User picks uppercase, lowercase, and special characters
-  
-    else if (uppercase && lowercase && specialCharacters) { 
-      characterSet = uppercaseArray.concat(lowercaseArray, specialCharArray);
-    }
-  
-    // User picks uppercase, numbers, and special characters
-  
-    else if (uppercase && numbers && specialCharacters) { 
-      characterSet = uppercaseArray.concat(numbersArray, specialCharArray);
-    }
-  
-    // User picks lowercase, numbers, and special characters
-  
-    else if (lowercase && numbers && specialCharacters) { 
-      characterSet = lowercaseArray.concat(numbersArray, specialCharArray);
-    }
-  
-    // User picks uppercase and lower case
-  
-    else if (uppercase && lowercase) { 
-      characterSet = uppercaseArray.concat(lowercaseArray);
+    // User picks uppercase
+    
+    if (uppercase) {
+        characterSet = characterSet.concat(uppercaseArray);
     
     } 
   
-    // User picks uppercase and numbers
-  
-    else if (uppercase && numbers) { 
-      characterSet = uppercaseArray.concat(numbersArray);
+    // User picks lowercase
     
-    } 
-  
-    // User picks uppercase and special characters
-  
-    else if (uppercase && specialCharacters) { 
-      characterSet = uppercaseArray.concat(specialCharArray);
-    
-    }
-    
-    // User picks lowercase and special characters
-  
-    else if (specialCharacters && lowercase) { 
-      characterSet = specialCharArray.concat(lowercaseArray);
-    
-    } 
-  
-    // User picks lowercase and numbers
-  
-    else if (numbers && lowercase) { 
-      characterSet = numbersArray.concat(lowercaseArray);
-    
-    } 
-  
-    // User picks special characters and numbers
-  
-    else if (numbers && specialCharacters) { 
-      characterSet = numbersArray.concat(specialCharArray);
-    
-    } 
-  
-    // User picks just uppercase
-    
-    else if (uppercase) {
-        characterSet = uppercaseArray;
-    
-    } 
-  
-    // User picks just lowercase
-    
-    else if (lowercase) {
-        characterSet = lowercaseArray;
+    if (lowercase) {
+        characterSet = characterSet.concat(lowercaseArray);
   
     } 
   
     // User picks just numbers
   
-    else if (numbers) {
-        characterSet = numbersArray;
+    if (numbers) {
+        characterSet = characterSet.concat(numbersArray);
   
     } 
   
     // User picks just special characters
   
-    else if (specialCharacters) {
-        characterSet = specialCharArray;
+    if (specialCharacters) {
+        characterSet = characterSet.concat(specialCharArray);
   
     } 
       
     // User doesn't pick anything (returns password as if they picked all 4 options)
       
-    else {
+    if (!uppercase && !lowercase && !numbers && !specialCharacters) {
         characterSet = uppercaseArray.concat(lowercaseArray, numbersArray, specialCharArray);
     
     }
