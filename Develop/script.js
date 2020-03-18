@@ -135,16 +135,21 @@ function generatePassword() {
   
     } 
       
-    // User doesn't pick anything (gives password as if they picked all 4 options)
+    // User doesn't pick anything (returns password as if they picked all 4 options)
       
     else {
         characterSet = uppercaseArray.concat(lowercaseArray, numbersArray, specialCharArray);
+    
     }
+
+    // For loop that creates final password Array; this is made into var password as a string
     
     for (var i = 0; i < length; i++) {
           passwordArray.push(characterSet[Math.floor(Math.random() * characterSet.length)]);
           var password = passwordArray.join('');
     }
+
+    // Returns final variable password to function
   
     return password; 
     
