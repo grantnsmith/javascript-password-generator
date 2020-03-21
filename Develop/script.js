@@ -48,14 +48,14 @@ function generatePassword() {
   
     } 
   
-    // User picks just numbers
+    // User picks numbers
   
     if (numbers) {
         characterSet = characterSet.concat(numbersArray);
   
     } 
   
-    // User picks just special characters
+    // User picks special characters
   
     if (specialCharacters) {
         characterSet = characterSet.concat(specialCharArray);
